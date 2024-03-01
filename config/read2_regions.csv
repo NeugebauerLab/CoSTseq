@@ -1,0 +1,6 @@
+name,location
+utr5,/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/data/genome/5UTR_coords.csv
+utr3,/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/data/genome/3UTR_coords.csv
+cds,/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/data/genome/CDS_coords.csv
+intron,/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/data/genome/intron_coords.csv
+scr1,/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/data/genome/scr1_coords.csv

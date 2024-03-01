@@ -1,0 +1,66 @@
+#### CONFIG ####
+DATAPATH:            "../../data/raw/"
+SAMPLES:             "../../config/adapters_test.csv"
+OUTPUTPATH:          "../../data/processed/"
+
+RUN_QC:              True
+RUN_DMS_AGG:         True
+RUN_DMS_R2:          True
+RUN_R2_REGIONS:      False
+RUN_DMS_COTRX_RRNA:  True
+RUN_PRO_SIGNAL:      True
+RUN_PRO_SIGNAL_RRNA: True
+RUN_DMS_COTRX:       True
+RUN_DESEQ:           False
+RUN_SPLICEQ:         False
+RUN_HDPROBE:         False
+COTRX_FILE:          "../../config/cotrx_targets_chr.csv"
+READ2_COORDS:        "../../config/read2_regions.csv"
+DESEQ_CTRL:          "wild"
+
+USE_STAR:            True
+STAR_MAX_INSERT:     1500
+STAR_INTRON_MIN:     21
+STAR_INTRON_MAX:     1200
+STAR_SJD_OHANG:      9999
+
+UMIPREFIX:           "UMI"
+UMILENGTH:           7
+TRIMFRONT2:          1
+
+DEDUP_MRNA:          True
+DEDUP_RRNA:          True
+DEDUPMEM:            64000
+WITHOUTUMI:          False
+IGNORESEQ:           False
+CLIPPENALTY_5:       False
+MINREADLENGTH:       20
+ALLOW_POLYA:         False
+
+THREADS:             15
+THREADS_DMS:         7
+MQFILTER:            10
+CLIPFILTER:          5
+CLIP_3:              18
+FILTER_3_CLIPPED:    True
+READ2DMSLEN:         150
+MIN_COV:             10 # pre-filter coverage for HDProbe export
+
+#### AUXILIARY FILES ####
+GENOMEFASTA:         "../../data/genome/scer_chr_kan.fsa"
+GENOMEANN:           "../../data/genome/scer_kan.gff"
+GENOMEANN_gtf:       "../../data/genome/scer_kan.gtf"
+RRNABED:             "../../data/genome/rRNA_coords_chr.bed"
+STARGENOMEDIR:       "../../data/genome/STAR"
+
+#### TOOLS ####
+BWA:                 "bwa"
+SAMTOOLS:            "samtools"
+DEDUPBAM:            "../../scripts/dedup_bam.py"
+PYTHON:              "python3.8"
+FASTP:               "fastp"
+UMIDEDUP:            "/gpfs/gibbs/project/neugebauer/ls2286/build/UMICollapse/umicollapse"
+STAR:                "STAR"
+DESEQ:               "../../scripts/run_deseq.py"
+SPLICEQ:             "/gpfs/gibbs/project/neugebauer/ls2286/build/SPLICE-q/spliceq/SPLICE-q.py"
+HDP:                 "/gpfs/gibbs/project/neugebauer/ls2286/build/HDProbe"

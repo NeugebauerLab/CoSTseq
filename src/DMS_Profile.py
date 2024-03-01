@@ -816,6 +816,9 @@ def normalize(arr, mask=None, per_exclude=10):
     arr_sort = np.array(arr_sort)
     arr_sort = np.sort(arr_sort[arr_sort==arr_sort])
 
+    if len(arr_sort) == 0:
+        return(1)
+
     # define values excluded for normalization
     IQR = iqr(arr_sort)
     PER = arr_sort[arr_sort.shape[0] - 1 - (len(arr_sort)//per_exclude if len(arr_sort) > 100 else len(arr_sort)//5)]

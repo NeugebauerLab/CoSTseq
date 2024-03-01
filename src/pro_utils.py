@@ -1,6 +1,5 @@
 from src.bam_utils import read_pair_generator, read_ends, get_clipped
 from src.dms_utils import map_mutations, join_reads
-import src.istarmap
 import pysam
 import numpy as np
 from collections import Counter

@@ -97,7 +97,7 @@ def QC(sample_name, output_path, fastp_json, mRNA_bam, mRNA_bam_ded, rRNA_bam, r
     dms_mRNA.plot_profile(chrom, '-', coords[0], coords[1], genome, ax6, cmap_loc='/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/scripts/cmap.txt')
     ax6.set_title('mRNA: TDH3')
     dms_rRNA.plot_profile(3252, 3252+200, genome_rrna, ax7, cmap_loc='/gpfs/gibbs/project/neugebauer/ls2286/lsStruct/scripts/cmap.txt')
-    plt.setp([ax6, ax7], ylim=(0, 0.15))
+    #plt.setp([ax6, ax7], ylim=(0, 0.15))
     ax7.set_title('rRNA')
 
     plt.savefig(output_path + '/' + sample_name + '_QC.pdf')
@@ -130,7 +130,10 @@ def get_s2n(dms, genome, bin_size=0.05, targeted=False):
     y_ac = np.histogram(np.log10(signa), bins=np.arange(-4, 0, bin_size), density=True)[0]
     
     # calculate s2n
-    snr = np.median(signa*dms.fac_norm) / np.median(noise*dms.fac_norm)
+    if targeted:
+        snr = np.median(signa) / np.median(noise)
+    else:
+        snr = np.median(signa*dms.fac_norm) / np.median(noise*dms.fac_norm)
     
     return(snr, x, y_gu, y_ac)
 

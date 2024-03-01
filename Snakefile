@@ -18,7 +18,7 @@ samples = pd.read_csv(config["SAMPLES"], delimiter=',').set_index('sample_name')
 cotrx = pd.read_csv(config["COTRX_FILE"], delimiter=',').set_index('name')
 read2_regions = pd.read_csv(config["READ2_COORDS"], delimiter=',').set_index('name')
 
-def get_output(samples, OUTPUTPATH, RUN_DMS_AGG, RUN_DMS_R2, RUN_R2_REGIONS, RUN_DMS_COTRX_RRNA, RUN_DMS_COTRX, RUN_PRO_SIGNAL, RUN_DESEQ, RUN_HDPROBE, DESEQ_CTRL, RUN_SPLICEQ):
+def get_output(samples, OUTPUTPATH, RUN_DMS_AGG, RUN_DMS_R2, RUN_R2_REGIONS, RUN_DMS_COTRX_RRNA, RUN_DMS_COTRX, RUN_PRO_SIGNAL, RUN_PRO_SIGNAL_RRNA, RUN_DESEQ, RUN_HDPROBE, DESEQ_CTRL, RUN_SPLICEQ, RUN_QC):
     # preprocessing
     if RUN_QC:
         out_files = [OUTPUTPATH + i + '.log' for i in list(samples.index)]
