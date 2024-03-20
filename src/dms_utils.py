@@ -248,7 +248,7 @@ def coverage_chrom_PE(file, chrom_nr, chrom, clip_filter=9999999, allow_polyA_cl
 
 def join_reads(read1, read2):
     """
-    Combine two read maps into a single read map.
+    Combine two read maps into a single read map. Modified based on code from https://codeocean.com/capsule/0380995/tree
 
     Parameters:
     - read1 (dict): Dictionary representing the first read map.
@@ -282,7 +282,7 @@ def join_reads(read1, read2):
 
 def map_mutations(read, qscore_cutoff=20, sur_bases=10, with_clipped=False):
     """
-    Convert a read's sequence to a vector of 0s & 1s and substituted bases.
+    Convert a read's sequence to a vector of 0s & 1s and substituted bases. Modified based on code from https://codeocean.com/capsule/0380995/tree
 
     Parameters:
     - read (pysam.AlignedSegment): Read (pysam.AlignedSegment() object).
@@ -389,7 +389,7 @@ def map_mutations(read, qscore_cutoff=20, sur_bases=10, with_clipped=False):
 
 def map_deletion(ref_seq, i, length, num_surBases):
     """
-    Determines whether a deletion is ambiguous or not by looking at the sequence surrounding the deletion.
+    Determines whether a deletion is ambiguous or not by looking at the sequence surrounding the deletion. Modified based on code from https://codeocean.com/capsule/0380995/tree
     
     Parameters:
         ref_seq (str): Reference sequence

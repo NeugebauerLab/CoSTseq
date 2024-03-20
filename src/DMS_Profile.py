@@ -792,7 +792,7 @@ def pro_combine_profiles(profiles, sample_id, genome, norm=True):
 
 def normalize(arr, mask=None, per_exclude=10):
     """
-    Normalize an array of reactivity values.
+    Normalize an array of reactivity values. Modified based on code from https://github.com/Weeks-UNC/shapemapper2
 
     Parameters:
     - arr (numpy.ndarray): Array of values to be normalized.
