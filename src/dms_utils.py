@@ -871,14 +871,14 @@ def normalize_cov(mut, cov, return_params=False):
         array-like or tuple: Normalized mutation data or tuple of alpha_p and beta_p.
     """
 
-    # Estiread alpha_p and beta_p using method of moments
+    # Estimate alpha_p and beta_p using method of moments
     rat = (mut + 1) / (cov + 1)
     E = np.mean(rat)
     V = np.var(rat)
     alpha_p = E * (((E * (1 - E)) / V) - 1)
     beta_p = (alpha_p * (1 - E)) / E
 
-    # Estiread adjusted mutation rate
+    # Estimate adjusted mutation rate
     rat_adj = (mut + alpha_p) / (cov + beta_p)
 
     if not return_params:
