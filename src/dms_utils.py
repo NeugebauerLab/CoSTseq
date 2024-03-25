@@ -879,7 +879,7 @@ def normalize_cov(mut, cov, return_params=False):
     beta_p = (alpha_p * (1 - E)) / E
 
     # Estimate adjusted mutation rate
-    rat_adj = (mut + alpha_p) / (cov + beta_p)
+    rat_adj = (mut + alpha_p) / (cov + alpha_p + beta_p)
 
     if not return_params:
         return(rat_adj)
