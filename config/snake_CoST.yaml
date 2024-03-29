@@ -47,7 +47,7 @@ READ2DMSLEN:         150
 MIN_COV:             10 # pre-filter coverage for HDProbe export
 
 #### AUXILIARY FILES ####
-GENOMEFASTA:         "../../data/genome/scer_chr_kan.fsa"
+GENOMEFASTA:         "../../data/genome/scer_chr_kan.FASTA"
 GENOMEANN:           "../../data/genome/scer_kan.gff"
 GENOMEANN_gtf:       "../../data/genome/scer_kan.gtf"
 RRNABED:             "../../data/genome/rRNA_coords_chr.bed"
