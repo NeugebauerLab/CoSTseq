@@ -282,6 +282,8 @@ rule QC:
     output:
         config['OUTPUTPATH'] + "{sample}.log",
         config['OUTPUTPATH'] + "{sample}_QC.pdf"
+    conda:
+        "CoST"
     shell:
         "{PYTHON} ../../scripts/run_QC.py {wildcards.sample} {input.path_out} {input.fastp_json} {input.mRNA_bam} {input.mRNA_bam_ded} {input.rRNA_bam} {input.rRNA_bam_ded} {input.dms_mRNA_pkl} {input.dms_rRNA_pkl} {input.genome_fasta} {input.pro_mRNA_pkl}"
 
@@ -478,6 +480,8 @@ rule DEseq2:
         config['OUTPUTPATH'] + "deseq/diff.counts.tsv"
     output:
         config['OUTPUTPATH'] + "deseq/deseq_results.pkl"
+    conda:
+        "CoST"
     params:
         ctrl=config['DESEQ_CTRL']
     threads: config['THREADS_DMS']
@@ -505,18 +509,16 @@ rule HDProbe:
         config['OUTPUTPATH'] + "HDProbe/mut_cov_mrna.tsv"
     output:
         config['OUTPUTPATH'] + "HDProbe/{condition}_mrna.csv"
+    conda:
+        "hdp_env"
     params:
         control=config['DESEQ_CTRL'],
         cutoff=700
     resources:
         mem_mb=16000
     threads: 1
-    priority: -50
     shell:
         """
-        conda deactivate
-    module purge
-        module load R-bundle-Bioconductor/3.15-foss-2020b-R-4.2.0
         Rscript ../../scripts/run_HDP.R -a {params.control} -b {wildcards.condition} --hdploc {HDP} --mutcov {input} --outpath {output} --cutoff {params.cutoff}
         """
 
@@ -540,17 +542,16 @@ rule HDProbe_rrna:
         config['OUTPUTPATH'] + "HDProbe/mut_cov_rrna.tsv"
     output:
         config['OUTPUTPATH'] + "HDProbe/{condition}_rrna.csv"
+    conda:
+        "hdp_env"
     params:
         control=config['DESEQ_CTRL'],
         cutoff=700
     threads: 1
     resources:
         mem_mb=16000
-    priority: -50
     shell:
         """
-        module purge
-        module load R-bundle-Bioconductor/3.15-foss-2020b-R-4.2.0
         Rscript ../../scripts/run_HDP.R -a {params.control} -b {wildcards.condition} --hdploc {HDP} --mutcov {input} --outpath {output} --cutoff {params.cutoff}
         """
 
@@ -560,6 +561,8 @@ rule Spliceq:
         genome=config['GENOMEANN_gtf']
     output:
         config['OUTPUTPATH'] + "splice/{sample}_SE.csv"
+    conda:
+        "CoST"
     shell:
         "{PYTHON} {SPLICEQ} -c 10 -b {input.bam} -g {input.genome} -o {output} --quiet"
 

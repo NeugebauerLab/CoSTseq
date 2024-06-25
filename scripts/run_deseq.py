@@ -36,9 +36,9 @@ def run_deseq2(counts_table, ctrl, threads, output_name):
                                    'condition': ['A']*len([i for i in samples if ctrl in i]) + ['B']*len([i for i in samples if cond in i])}).set_index('samples')
         
         # run DEseq2
-        dds = DeseqDataSet(sample_df, conditions, design_factors="condition", refit_cooks=True, n_cpus=threads)
+        dds = DeseqDataSet(counts=sample_df, metadata=conditions, design_factors="condition", refit_cooks=True, n_cpus=threads)
         dds.deseq2()
-        stat_res = DeseqStats(dds, n_cpus=threads)
+        stat_res = DeseqStats(dds)
         stat_res.summary()
         results[cond] = stat_res.results_df.reset_index()
 

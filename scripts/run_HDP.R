@@ -72,7 +72,7 @@ analyze_dms <- function(data, metadf,
     mutate(GF = paste(rname, gloc, nt, strand, sep = "&"))
 
   ### Analyze only As and Cs
-  Muts_df <- Muts_df[Muts_df$nt %in% c("A", "C", "U", "T"),]
+  Muts_df <- Muts_df[Muts_df$nt %in% c("A", "C"),]
 
 
   message("Running HDProbe")
