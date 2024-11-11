@@ -3,7 +3,7 @@ Data processing pipeline and analysis code for handling CoSTseq and DMS-MaPseq s
 
 ## Installing the CoSTseq package
 
-CoSTseq uses Snakemake and a custom conda environment. In addition, the following software packages need to be installed and accessible for Snakemake: `fastp`, `STAR`, `UMIdedup`, `RNAstructure`, `ViennaRNA`. 
+CoSTseq uses Snakemake and a custom conda environment. In addition, the following software packages need to be installed and accessible for Snakemake: `fastp`, `STAR`, `UMIdedup`, `RNAstructure`, `samtools`. Set the path to each software package in the `config/snake_CoST.yaml` file.
 
 ```bash
 # clone repository
@@ -24,7 +24,7 @@ After completing the configuration process, the pipeline can be executed using t
 
 ```bash
 conda activate CoST
-snakemake -c 16 --configfile config/snake_muts_pro.yaml --resources mem_mb=32000
+snakemake -c 16 -d smk_rundir/test --configfile config/snake_CoST.yaml --resources mem_mb=32000 --rerun-incomplete --use-conda
 ```
 
 ## Re-generating analyses and figures from "Rapid folding of nascent RNA regulates eukaryotic RNA biogenesis"
