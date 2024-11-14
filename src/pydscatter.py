@@ -106,7 +106,7 @@ def aggregate(group_idx, a, size):
     """Similar to MATLAB accumarray"""
 
     group_idx = np.ravel_multi_index(group_idx, size, mode='clip')    
-    ret = np.bincount(group_idx, minlength=np.product(size))
+    ret = np.bincount(group_idx, minlength=size[0] * size[1])
     if a != 1:
         ret *= a
     ret = ret.reshape(size)
