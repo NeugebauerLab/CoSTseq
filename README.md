@@ -3,7 +3,7 @@ Data processing pipeline and analysis code for handling CoSTseq and DMS-MaPseq s
 
 ## Installing the CoSTseq package
 
-CoSTseq uses Snakemake and a custom conda environment. In addition, the following software packages need to be installed and accessible for Snakemake: `fastp`, `STAR`, `UMIdedup`, `RNAstructure`, `samtools`. Set the path to each software package in the `config/snake_CoST.yaml` file.
+CoSTseq uses Snakemake and a custom conda environment. In addition, the following software packages need to be installed and accessible for Snakemake: `fastp`, `STAR`, `UMICollapse`, `RNAstructure`, `samtools`. Set the path to each software package in the `config/snake_CoST.yaml` file.
 
 ```bash
 # clone repository
